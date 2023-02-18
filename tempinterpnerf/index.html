@@ -1,0 +1,138 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Temporal Interpolation NeRF</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:image" content="https://sungheonpark.github.io/tempinterpnerf/img/flame_steak.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="703">
+    <meta property="og:image:height" content="527">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sungheonpark.github.io/tempinterpnerf/"/>
+    <meta property="og:title" content="Temporal Interpolation is All You Need for Dynamic Neural Radiance Fields" />
+    <meta property="og:description" content="Temporal interpolation often plays a crucial role to learn meaningful representations in dynamic scenes. In this paper, we propose a novel method to train four-dimensional spatiotemporal neural radiance fields of dynamic scenes based on temporal interpolation of feature vectors. Two feature interpolation methods are suggested depending on underlying representations, neural or grid representation. In neural representation, we extract features from space-time inputs via multiple neural network modules and interpolate them based on time frames. The proposed multi-level feature interpolation network effectively captures features of both short-term and long-term time ranges. In grid representation, space-time features are learned via four-dimensional hash grids. The grid representation remarkably reduces training time, which is more than 100 times faster compared to the neural network models, while maintaining the rendering quality of trained models. Concatenation of static and dynamic features and addition of simple smoothness term further improves the performance of the proposed models. Despite the simplicity of its network architecture, we demonstrate that the proposed method shows superior performance to previous works in neural representation and shows the fastest training speed in grid representation." />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Temporal Interpolation is All You Need for Dynamic Neural Radiance Fields" />
+    <meta name="twitter:description" content="Temporal interpolation often plays a crucial role to learn meaningful representations in dynamic scenes. In this paper, we propose a novel method to train four-dimensional spatiotemporal neural radiance fields of dynamic scenes based on temporal interpolation of feature vectors. Two feature interpolation methods are suggested depending on underlying representations, neural or grid representation. In neural representation, we extract features from space-time inputs via multiple neural network modules and interpolate them based on time frames. The proposed multi-level feature interpolation network effectively captures features of both short-term and long-term time ranges. In grid representation, space-time features are learned via four-dimensional hash grids. The grid representation remarkably reduces training time, which is more than 100 times faster compared to the neural network models, while maintaining the rendering quality of trained models. Concatenation of static and dynamic features and addition of simple smoothness term further improves the performance of the proposed models. Despite the simplicity of its network architecture, we demonstrate that the proposed method shows superior performance to previous works in neural representation and shows the fastest training speed in grid representation." />
+    <meta name="twitter:image" content="https://sungheonpark.github.io/tempinterpnerf/img/flame_steak.png" />
+
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💫</text></svg>">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <b>Temporal Interpolation is All You Need for Dynamic Neural Radiance Fields</b></br>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://sungheonpark.github.io/">
+                            Sungheon Park
+                        </a>
+                    </li>
+                    <li>
+                        Minjung Son
+                    </li>
+                    <li>
+                        Seokhwan Jang
+                    </li>
+                    <li>
+                        Young Chun Ahn
+                    </li>
+                    <li>
+                        Ji-Yeon Kim
+                    </li>
+                    <li>
+                        Nahyup Kang
+                    </li>
+                </ul>
+                <ul class="list-inline">
+                    <li>
+                        Samsung Advanced Institute of Technology (SAIT)
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <ul class="nav nav-pills nav-justified">
+                    <li>
+                        <a href="https://arxiv.org/">
+                            <image src="img/paper.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                    Temporal interpolation often plays a crucial role to learn meaningful representations in dynamic scenes. In this paper, we propose a novel method to train four-dimensional spatiotemporal neural radiance fields of dynamic scenes based on temporal interpolation of feature vectors. Two feature interpolation methods are suggested depending on underlying representations, neural or grid representation. In neural representation, we extract features from space-time inputs via multiple neural network modules and interpolate them based on time frames. The proposed multi-level feature interpolation network effectively captures features of both short-term and long-term time ranges. In grid representation, space-time features are learned via four-dimensional hash grids. The grid representation remarkably reduces training time, which is more than 100 times faster compared to the neural network models, while maintaining the rendering quality of trained models. Concatenation of static and dynamic features and addition of simple smoothness term further improves the performance of the proposed models. Despite the simplicity of its network architecture, we demonstrate that the proposed method shows superior performance to previous works in neural representation and shows the fastest training speed in grid representation.
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Neural Representation
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:23%;">
+                        <img src="img/fig_nn.png" style="position:absolute;top:0;left:0;width:100%;height:100%;"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Grid Representation
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:26%;">
+                        <img src="img/fig_grid.png" style="position:absolute;top:0;left:0;width:100%;height:100%;"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>
