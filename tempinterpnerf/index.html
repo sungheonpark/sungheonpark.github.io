@@ -39,6 +39,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script src="compare.js"></script>
 </head>
 
 <body>
@@ -57,7 +58,7 @@
                         </a>
                     </li>
                     <li>
-                        Minjung Son
+                        <a href="https://sites.google.com/site/sionson/">Minjung Son</a>
                     </li>
                     <li>
                         Seokhwan Jang
@@ -79,7 +80,7 @@
                 </ul>
                 <ul class="list-inline">
                     <li>
-                        <a href="https://cvpr2023.thecvf.com/"> CVPR 2023 </a>
+                        <a href="https://cvpr2023.thecvf.com/"> CVPR 2023 </a> (<b>Highlight</b>)
                     </li>
                 </ul>
             </div>
@@ -103,7 +104,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    Abstract
+                    <b>Abstract</b>
                 </h3>
                 <p class="text-justify">
                     Temporal interpolation often plays a crucial role to learn meaningful representations in dynamic scenes. In this paper, we propose a novel method to train four-dimensional spatiotemporal neural radiance fields of dynamic scenes based on temporal interpolation of feature vectors. Two feature interpolation methods are suggested depending on underlying representations, neural or grid representation. In neural representation, we extract features from space-time inputs via multiple neural network modules and interpolate them based on time frames. The proposed multi-level feature interpolation network effectively captures features of both short-term and long-term time ranges. In grid representation, space-time features are learned via four-dimensional hash grids. The grid representation remarkably reduces training time, which is more than 100 times faster compared to the neural network models, while maintaining the rendering quality of trained models. Concatenation of static and dynamic features and addition of simple smoothness term further improves the performance of the proposed models. Despite the simplicity of its network architecture, we demonstrate that the proposed method shows superior performance to previous works in neural representation and shows the fastest training speed in grid representation.
@@ -116,38 +117,120 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    Neural Representation
+                    <b>Neural Representation</b>
                 </h3>
                 <div class="text-center">
                     <div style="position:relative;padding-top:23%;">
                         <img src="img/fig_nn.png" style="position:absolute;top:0;left:0;width:100%;height:100%;"></img>
                     </div>
-             
-                <br>
-                Qualitative results on D-NeRF dataset
-                <br>
-                <video id="v0" width="100%" autoplay loop muted controls>
-                  <source src="img/nn_dnerf.mp4" type="video/mp4" />
-                </video>
+
                 </div>
+
+                <br>
+                <div class="text-center">
+                    <h3>Qualitative results</h3>
+                </div>
+                <br>
+
+                <div id="gallerywrapper">
+                    <div id="gallery">
+                        <div id="vid0">
+                            <a class="previous" href="#vid4">&laquo; &nbsp;&nbsp;Previous</a>
+                            <a class="next" href="#vid1">&nbsp;&nbsp;&nbsp;&nbsp;Next &nbsp;&nbsp;&raquo;&nbsp;&nbsp;&nbsp;&nbsp;</a><br /><br />
+                            <video id="v0" width="100%" autoplay loop muted controls>
+                                <source src="img/nn_dnerf_30fps.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div id="vid1">
+                            <a class="previous" href="#vid0">&laquo; &nbsp;&nbsp;Previous</a>
+                            <a class="next" href="#vid2">&nbsp;&nbsp;&nbsp;&nbsp;Next &nbsp;&nbsp;&raquo;&nbsp;&nbsp;&nbsp;&nbsp;</a><br /><br />
+                            <video id="v1" width="100%" autoplay loop muted controls>
+                                <source src="img/split-cookie.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div id="vid2">
+                            <a class="previous" href="#vid1">&laquo; &nbsp;&nbsp;Previous</a>
+                            <a class="next" href="#vid3">&nbsp;&nbsp;&nbsp;&nbsp;Next &nbsp;&nbsp;&raquo;&nbsp;&nbsp;&nbsp;&nbsp;</a><br /><br />
+                            <video id="v2" width="100%" autoplay loop muted controls>
+                                <source src="img/americano.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div id="vid3">
+                            <a class="previous" href="#vid2">&laquo; &nbsp;&nbsp;Previous</a>
+                            <a class="next" href="#vid4">&nbsp;&nbsp;&nbsp;&nbsp;Next &nbsp;&nbsp;&raquo;&nbsp;&nbsp;&nbsp;&nbsp;</a><br /><br />
+                            <video id="v3" width="100%" autoplay loop muted controls>
+                                <source src="img/espresso.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div id="vid4">
+                            <a class="previous" href="#vid3">&laquo; &nbsp;&nbsp;Previous</a>
+                            <a class="next" href="#vid0">&nbsp;&nbsp;&nbsp;&nbsp;Next &nbsp;&nbsp;&raquo;&nbsp;&nbsp;&nbsp;&nbsp;</a><br /><br />
+                            <video id="v4" width="100%" autoplay loop muted controls>
+                                <source src="img/flame_steak.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="text-center">
+                    <h3>Qualitative comparison with HyperNeRF</h3>
+                </div>
+                <div class="compare">
+                    <video class="compared compared-vertical"
+                           data-compare-top="standard"
+                           data-compare-bottom="ours"
+                           loop muted autoplay>
+                        <source src="img/compare_nn.mp4" type="video/mp4">
+                        <p>Your browser doesn't support HTML5 video. Here is a <a href="barber.mp4">link to the video</a> instead.</p>
+                    </video>
+                </div>
+                <br>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    Grid Representation
+                    <b>Grid Representation</b>
                 </h3>
                 <div class="text-center">
                     <div style="position:relative;padding-top:26%;">
                         <img src="img/fig_grid.png" style="position:absolute;top:0;left:0;width:100%;height:100%;"></img>
                     </div>
+                </div>
                 <br>
-                Training progress on D-NeRF dataset
+                <div class="text-center">
+                    <h3>Training progress on D-NeRF dataset (5x faster)</h3>
+                </div>
+                <div class="text-center">
+                    <video id="v0" width="100%" autoplay loop muted controls>
+                        <source src="img/grid_dnerf_30fps.mp4" type="video/mp4" />
+                    </video>
+                </div>
+
                 <br>
-                <video id="v0" width="100%" autoplay loop muted controls>
-                  <source src="img/grid_dnerf.mp4" type="video/mp4" />
-                </video>
+                <div class="text-center">
+                    <h3>Qualitative comparison with TinueVox-S (8min training)</h3>
+                </div>
+                <div class="compare">
+                    <video class="compared compared-vertical"
+                           data-compare-top="standard"
+                           data-compare-bottom="ours"
+                           loop muted autoplay>
+                        <source src="img/compare_grid.mp4" type="video/mp4">
+                        <p>Your browser doesn't support HTML5 video. Here is a <a href="barber.mp4">link to the video</a> instead.</p>
+                    </video>
+                </div>
+
+                <br>
+                <div class="text-center">
+                    <h3>Real-time rendering demo</h3>
+                </div>
+                <div class="text-center">
+                    <video id="v0" width="100%" autoplay loop muted controls>
+                        <source src="img/grid_demo_1080.mp4" type="video/mp4" />
+                    </video>
                 </div>
             </div>
         </div>
